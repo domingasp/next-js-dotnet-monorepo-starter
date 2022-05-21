@@ -1,34 +1,65 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next.js Project Starter
 
-## Getting Started
+This repository aims to handle most of the setup required when creating a new Next.js project. The setup of ESLint, Prettier, Jest and Testing Library has already been handled.
 
-First, run the development server:
+The editor of choice is VS Code, thus only the configuration for this code editor is provided.
 
-```bash
-npm run dev
-# or
-yarn dev
+It is opinionated providing a recommended folder structure.
+
+## How to use?
+
+Once cloned you will want to install the required dependencies using your package manager of choice.
+
+```
+npm install
+pnpm install
+yarn install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+In `package.json` update the `"name"` property to match the name of your application. Whilst the file is open make a mental note of the various scripts which can be run.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+Don't forget to:
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+- Remove the old `.git` directory and reinitialise the repository.
+- Update or delete `license.txt`.
+- Update or delete `README.md`.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+### VS Code Users
 
-## Learn More
+The following extensions should be installed for full functionality, and benefits of this project:
 
-To learn more about Next.js, take a look at the following resources:
+- [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) - picks ups any linting errors as you code.
+- [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) - automatically formats your code on save (in this particular configuration).
+- [CSS Modules](https://marketplace.visualstudio.com/items?itemName=clinyong.vscode-css-modules) - autocompletes class names from `module.css` files when importing into a React component.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## What's included?
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+This project has already set-up the main tools you will need to write clean consistent code.
 
-## Deploy on Vercel
+- [`normalize.css`](https://necolas.github.io/normalize.css/) - _"makes browsers render all elements more consistently and in line with modern standards. It precisely targets only the styles that need normalizing."_
+- ESLint with Airbnb style guide - start conforming to some form of style guide. This is highly configurable, rules which you do not need can be disabled. Additionally, the `.eslintignore` file contains any patterns which should be ignored by ESLint, in this case any `*.config.js` files.
+- Prettier - to ensure consistency and less hassle from ESLint when writing code.
+- Jest and Testing Library - allows testing to start happening outside the box.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Folder Structure
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+The project contains a simple page with a `Button` component to showcase the expected structure of the project.
+
+- `./src/pages` - **ONLY** for pages, non-page components, e.g. Buttons, should be stored in `./src/common/components`.
+  - Next.js has optimisations at the page level, every component file under this directory will be treated as a page drastically increasing build time. [Stackoverflow Thread discussing this.](https://stackoverflow.com/a/59924145)
+- `./src/__tests__` - any tests which cannot go next to the component file, e.g. tests for components in `pages` directory.
+- `./src/styles` - any styles which cannot go next to the component `.tsx` file, e.g. styles for pages.
+- `./src/common` - non-page components and types.
+- `./src/common/components/[Component Name]` - a component `.tsx`, it's style `.module.css` and test files `.spec.tsx`.
+  - Type specific for the component can go in the `.tsx` file
+- `./src/common/types` - reusable types.
+- `./public` - store static files, such as images, `robots.txt`, and `favicon.ico`, here.
+
+## Branches
+
+- `main` - as described above.
+- `with-stitches` - uses Stitches for design instead of `styled-jsx` and CSS Modules.
+
+## License
+
+[MIT](license.txt)

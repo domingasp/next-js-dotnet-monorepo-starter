@@ -4,17 +4,20 @@ services:
     build:
       dockerfile: dev.dockerfile
     ports:
-      - "3000:3000"
+      - '3000:3000'
     volumes:
-      - type: bind
-        source: ./pages
-        target: /app/pages
       - type: bind
         source: ./public
         target: /app/public
       - type: bind
-        source: ./styles
-        target: /app/styles
+        source: ./src/common
+        target: /app/src/common
+      - type: bind
+        source: ./src/pages
+        target: /app/src/pages
+      - type: bind
+        source: ./src/styles
+        target: /app/src/styles
       - type: bind
         source: ./next-env.d.ts
         target: /app/next-env.d.ts
