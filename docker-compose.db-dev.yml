@@ -1,0 +1,10 @@
+services:
+  db:
+    image: postgres:14.3-alpine
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=password
+    ports:
+      - 5432:5432
+    volumes:
+      - /Users/domingas/Documents/Projects/data/monorepo-starter:/var/lib/postgresql/data
