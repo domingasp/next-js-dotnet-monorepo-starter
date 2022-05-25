@@ -1,0 +1,7 @@
+services:
+  frontend-prod:
+    container_name: frontend-prod
+    build:
+      target: runner
+    ports:
+      - '3000:3000'
