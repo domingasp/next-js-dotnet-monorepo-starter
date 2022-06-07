@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using API.Features.Products.Create;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Features.Products;
@@ -18,5 +19,14 @@ public class ProductsController : ControllerBase
         var products = await _mediator.Send(new GetAllProductsQuery());
 
         return Ok(products);
+    }
+
+    [HttpPost]
+    [Route("create")]
+    public async Task<ActionResult> Create(CreateProductDTO DTO)
+    {
+        var createdId = await _mediator.Send(new CreateProductCommand(DTO));
+
+        return Ok(createdId);
     }
 }
