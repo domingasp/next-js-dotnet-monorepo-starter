@@ -20,9 +20,12 @@ static void RegisterServices(WebApplicationBuilder builder)
     services.AddSwaggerGen();
 
     services.AddDbContext<APIContext>(options =>
-        options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+        options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"))
+            .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking));
 
     services.AddMediatR(typeof(Program));
+
+    services.AddControllers();
 }
 
 static void ConfigureApplication(WebApplication app)
@@ -34,4 +37,6 @@ static void ConfigureApplication(WebApplication app)
     }
 
     app.UseHttpsRedirection();
+
+    app.MapControllers();
 }
