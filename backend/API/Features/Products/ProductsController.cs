@@ -15,7 +15,7 @@ public class ProductsController : ControllerBase
     [Route("getall")]
     public async Task<ActionResult> GetAll()
     {
-        var products = await _mediator.Send(new GetProductsQuery());
+        var products = await _mediator.Send(new GetAllProductsQuery());
 
         return Ok(products);
     }
