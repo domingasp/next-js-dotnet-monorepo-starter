@@ -14,7 +14,7 @@ public class ProductsController : ControllerBase
 
     [HttpGet]
     [Route("getall")]
-    public async Task<ActionResult> GetAll()
+    public async Task<IActionResult> GetAll()
     {
         var products = await _mediator.Send(new GetAllProductsQuery());
 
@@ -23,10 +23,23 @@ public class ProductsController : ControllerBase
 
     [HttpPost]
     [Route("create")]
-    public async Task<ActionResult> Create(CreateProductDTO DTO)
+    public async Task<IActionResult> Create(CreateProductDTO DTO)
     {
         var createdId = await _mediator.Send(new CreateProductCommand(DTO));
 
         return Ok(createdId);
+    }
+
+    [HttpDelete]
+    [Route("delete")]
+    public async Task<IActionResult> Delete(int Id)
+    {
+        var deleted = await _mediator.Send(new DeleteProductCommand(Id));
+        if (!deleted)
+        {
+            return NotFound();
+        }
+
+        return Ok();
     }
 }
