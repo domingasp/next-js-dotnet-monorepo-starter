@@ -1,5 +1,4 @@
-﻿using System;
-using API.Data;
+﻿using API.Data;
 using API.Models;
 using MediatR;
 

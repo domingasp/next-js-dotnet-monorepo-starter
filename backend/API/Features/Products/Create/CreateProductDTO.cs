@@ -1,5 +1,4 @@
-﻿using System;
-namespace API.Features.Products.Create;
+﻿namespace API.Features.Products.Create;
 
 public class CreateProductDTO
 {
