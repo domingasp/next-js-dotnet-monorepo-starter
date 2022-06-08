@@ -1,6 +1,8 @@
 ﻿using API.Data;
 using Microsoft.EntityFrameworkCore;
 using MediatR;
+using API.Behaviors;
+using FluentValidation.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,8 +26,10 @@ static void RegisterServices(WebApplicationBuilder builder)
             .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking));
 
     services.AddMediatR(typeof(Program));
+    services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 
-    services.AddControllers();
+    services.AddControllers()
+        .AddFluentValidation(config => config.RegisterValidatorsFromAssemblyContaining<Program>());
 }
 
 static void ConfigureApplication(WebApplication app)

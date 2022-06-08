@@ -1,6 +1,6 @@
 ﻿namespace API.Features.Products.Create;
 
-public class CreateProductDTO
+public class CreateProductDto
 {
     public string Name { get; init; } = default!;
 }

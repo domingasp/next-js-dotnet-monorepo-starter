@@ -23,9 +23,9 @@ public class ProductsController : ControllerBase
 
     [HttpPost]
     [Route("create")]
-    public async Task<IActionResult> Create(CreateProductDTO DTO)
+    public async Task<IActionResult> Create(CreateProductDto Dto)
     {
-        var createdId = await _mediator.Send(new CreateProductCommand(DTO));
+        var createdId = await _mediator.Send(new CreateProductCommand(Dto));
 
         return Ok(createdId);
     }

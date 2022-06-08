@@ -21,7 +21,7 @@ public class DeleteProductHandler : IRequestHandler<DeleteProductCommand, bool>
         if (product != null)
         {
             _apiContext.Products.Remove(product);
-            await _apiContext.SaveChangesAsync();
+            await _apiContext.SaveChangesAsync(cancellationToken);
 
             return true;
         }

@@ -31,6 +31,7 @@
     <None Remove="Features\" />
     <None Remove="Features\Products\" />
     <None Remove="Features\Products\Create\" />
+    <None Remove="Behaviours\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
@@ -38,5 +39,6 @@
     <Folder Include="Features\" />
     <Folder Include="Features\Products\" />
     <Folder Include="Features\Products\Create\" />
+    <Folder Include="Behaviors\" />
   </ItemGroup>
 </Project>
